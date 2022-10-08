@@ -1,0 +1,13 @@
+.LandingPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.brandTheme {
+  width: 100%;
+  height: 100px;
+  background: rgba(143, 143, 180, 0.452);
+}
