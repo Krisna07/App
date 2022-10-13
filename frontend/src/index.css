@@ -3,10 +3,13 @@
   --bodyFont: "Inter", sans-serif;
   --backgroundLinearGradient: linear-gradient(
     to right,
-    #0f0c29,
-    #302b63,
-    #24243e
+    var(--color1) 100%,
+    var(--color2) 0%
   );
+  --color1: #000000;
+  --color2: #150050;
+  --color3: #3f0071;
+  --color4: #fb2576;
 }
 
 body {
@@ -25,4 +28,9 @@ code {
 
 span {
   cursor: default;
+}
+.textGradient {
+  background: -webkit-linear-gradient(var(--color4), var(--color3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

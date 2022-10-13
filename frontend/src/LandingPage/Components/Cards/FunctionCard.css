@@ -1,0 +1,22 @@
+.card-1 {
+  padding: 2rem;
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgb(41, 41, 41);
+}
+.cardIcon {
+  font-size: 50px;
+  padding-bottom: 1rem;
+}
+.cardHeading {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: var(--headingFont);
+}
+.cardDes {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.671);
+}

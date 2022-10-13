@@ -10,34 +10,30 @@
   font-family: var(--bodyFont);
   gap: 4rem;
 }
+
 .section1 {
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 8rem;
   padding: 4rem 0;
 }
 .section1 .heading {
   width: 100%;
-  /* max-width: 25ch; */
   font-size: 50px;
   font-weight: bolder;
-  /* padding: 4rem; */
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: -webkit-linear-gradient(rgb(255, 152, 152), rgb(189, 186, 186));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: var(--headingFont);
 }
 .animatedBoxed {
   width: 80%;
-  /* background: rgba(135, 207, 235, 0.349); */
   display: flex;
   align-items: flex-start;
-  font-size: 400%;
+  font-size: 200%;
   text-align: center;
   overflow: hidden;
 }
@@ -59,7 +55,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 4rem;
-  background: linear-gradient(0.25turn, cyan, rgb(158, 158, 250));
+  background: linear-gradient(0.25turn, var(--color3), var(--color4));
   background-size: 200% 200%;
   animation: movingGradient infinite 10s;
   border-radius: 16px;
@@ -72,7 +68,7 @@
     background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% -50%;
   }
 }
 .appImage {
@@ -87,6 +83,9 @@
   width: 100%;
   display: flex;
   text-align: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 .briteHeading {
   width: 100%;
@@ -99,7 +98,14 @@
     left: -100px;
   }
 }
-
+.appFunctions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
+  border-radius: 20px;
+}
 .usesDiv {
   width: 80%;
   display: flex;
@@ -112,6 +118,9 @@
   opacity: 0.6;
 }
 @media only screen and (max-width: 800px) {
+  .pageLayout {
+    width: 100%;
+  }
   .section2 {
     grid-template-areas:
       "    left left "
@@ -134,5 +143,9 @@
   }
   .tools .toolname {
     display: none;
+  }
+  .appFunctions {
+    width: 90%;
+    grid-template-columns: 1fr;
   }
 }
