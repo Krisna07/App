@@ -100,28 +100,31 @@ const LandingLayout = () => {
   return (
     <div className="pageLayout">
       <div className="section1">
-        <div className="heading textGradient" style={{ maxWidth: "25ch" }}>
-          Budget Management System And Budget Planning
+        <div className="headingContainer">
+          <div className="heading textGradient" style={{ maxWidth: "25ch" }}>
+            Budget Management System And Budget Planning
+          </div>
+          <div className="appdes">
+            <p>
+              Brite is a multi-invertory account management system based on
+              Crypto protocol. Brite is creating a world for economic processing
+              and saving solutions. Brite is safe and fully customizable online
+              banking.
+            </p>
+          </div>
         </div>
-
-        <div className="appdes">
-          <p>
-            Brite is a multi-invertory account management system based on Crypto
-            protocol. Brite is creating a world for economic processing and
-            saving solutions. Brite is safe and fully customizable online
-            banking.
-          </p>
-        </div>
-        <div className="appContainer">
-          <div className="appImage"></div>
-        </div>
-        <div className="usesDiv">
-          {uses.map((items, keys) => (
-            <div className="items" key={keys}>
-              <h4>{items.number}</h4>
-              <h4>{items.type}</h4>
-            </div>
-          ))}
+        <div className="appImageConatiner">
+          <div className="appContainer">
+            <div className="appImage"></div>
+          </div>
+          <div className="usesDiv">
+            {uses.map((items, keys) => (
+              <div className="items" key={keys}>
+                <h4>{items.number}</h4>
+                <h4>{items.type}</h4>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="briteFunctions">
           <div className="briteHeading">
@@ -173,7 +176,7 @@ const LandingLayout = () => {
             className="appFunctions"
             style={{
               width: "120%",
-              gridTemplateColumns: "1fr 1fr 1fr 1fr",
+              // gridTemplateColumns: "1fr 1fr 1fr 1fr",
               padding: "0",
             }}
           >
