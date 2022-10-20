@@ -1,0 +1,165 @@
+.pageLayout {
+  width: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--bodyFont);
+  gap: 4rem;
+}
+
+.section1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8rem;
+  padding: 4rem 0;
+}
+.headingContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.section1 .heading {
+  width: 100%;
+  font-size: 50px;
+  font-weight: bolder;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--headingFont);
+}
+.animatedBoxed {
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+  font-size: 200%;
+  text-align: center;
+  overflow: hidden;
+}
+.animatedBoxed div {
+  padding: 2rem;
+  animation: goAround 2s infinite alternate-reverse;
+  position: relative;
+}
+.appdes {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+}
+.appImageConatiner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.appContainer {
+  width: 100%;
+  min-height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+  background: linear-gradient(0.25turn, var(--color3), var(--color4));
+  background-size: 200% 200%;
+  animation: movingGradient infinite 10s;
+  border-radius: 16px;
+}
+@keyframes movingGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% -50%;
+  }
+}
+.appImage {
+  width: 80%;
+  height: 500px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 20px 20px 0 0;
+  opacity: 0.6;
+}
+.briteFunctions {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.briteHeading {
+  width: 100%;
+}
+@keyframes goAround {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100px;
+  }
+}
+.appFunctions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
+  border-radius: 20px;
+}
+.usesDiv {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 20px;
+}
+.items h4:nth-child(2) {
+  opacity: 0.6;
+}
+@media only screen and (max-width: 800px) {
+  .pageLayout {
+    width: 100%;
+  }
+  .section2 {
+    grid-template-areas:
+      "    left left "
+      "right right"
+      " bottom bottom";
+    position: relative;
+  }
+  .leftSide {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    z-index: 2;
+  }
+  .rightSide {
+    display: none;
+  }
+  .tools {
+    grid-area: bottom;
+    display: grid;
+  }
+  .tools .toolname {
+    display: none;
+  }
+  .appFunctions {
+    width: 90% !important;
+    grid-template-columns: 1fr !important;
+  }
+}

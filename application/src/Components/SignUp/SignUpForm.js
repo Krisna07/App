@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
@@ -6,17 +6,40 @@ import PasswordStr from "./PasswordStr";
 import "./Signup.css";
 
 const SignUpForm = ({
-  history,
-  onSubmit,
-  onChange,
   errors,
-  user,
+
   score,
   btnTxt,
   type,
   pwMask,
-  onPwChange,
 }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    pwConfirm: "",
+  });
+  const [pwError, setPwerror] = useState();
+  const { name, email, password, pwConfirm } = formData;
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!password || !pwConfirm) {
+      return setPwerror("please enter the password");
+    }
+    if (password !== pwConfirm) {
+      setPwerror("Password didnt match");
+    } else {
+      setPwerror("");
+    }
+  };
   return (
     <div className="loginBox">
       <h1>Sign Up</h1>
@@ -24,53 +47,37 @@ const SignUpForm = ({
 
       <form onSubmit={onSubmit}>
         <TextField
-          name="username"
+          name="name"
           floatingLabelText="Username"
-          value={user.username}
+          value={name}
           onChange={onChange}
-          errorText={errors.username}
         />
         <TextField
           name="email"
           floatingLabelText="Email"
-          value={user.email}
+          value={email}
           onChange={onChange}
-          errorText={errors.email}
         />
         <TextField
           type={type}
           name="password"
           floatingLabelText="Password"
-          value={user.password}
-          onChange={onPwChange}
-          errorText={errors.password}
+          value={password}
+          onChange={onChange}
         />
 
-        <div className="pwStrRow">
-          {score >= 1 && (
-            <div>
-              <PasswordStr score={score} />
-              <FlatButton
-                className="pwShowHideBtn"
-                label={btnTxt}
-                onClick={pwMask}
-                style={{
-                  position: "relative",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                }}
-              />
-            </div>
-          )}
-        </div>
         <TextField
           type={type}
-          name="pwconfirm"
+          name="pwConfirm"
           floatingLabelText="Confirm Password"
-          value={user.pwconfirm}
+          value={pwConfirm}
           onChange={onChange}
-          errorText={errors.pwconfirm}
         />
+        <br />
+        <p style={{ display: `${!pwError ? "hidden" : "block"}` }}>
+          {!pwError ? "" : pwError}
+        </p>
+
         <br />
         <RaisedButton
           className="signUpSubmit"
@@ -81,7 +88,7 @@ const SignUpForm = ({
       </form>
       <p>
         Aleady have an account? <br />
-        <a href="/">Log in here</a>
+        <a href="/login">Log in here</a>
       </p>
     </div>
   );

@@ -1,0 +1,35 @@
+.sectionContainer {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: 40px 0;
+}
+.sectionLeft {
+  grid-area: sectionLeft;
+  width: 60%;
+  background: rgba(163, 159, 159, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 49px 0px;
+}
+.sectionRight {
+  grid-area: sectionRigth;
+  width: 100%;
+  background: rgb(170, 144, 144);
+}
+.pageBtn {
+  padding: 0.5rem 1rem;
+  outline: none;
+  box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 49px 0px;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}

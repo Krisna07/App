@@ -6,7 +6,9 @@ const {
   getAccount,
   deleteAccount,
 } = require("../Controllers/AccountsController");
-router.route("/").get(getAccount).post(createAccount);
-router.route("/:id").put(editAccount).delete(deleteAccount);
+const { protect } = require("../Middleware/authMiddleware");
+
+router.route("/").get(protect, getAccount).post(protect, createAccount);
+router.route("/:id").put(protect, editAccount).delete(protect, deleteAccount);
 
 module.exports = router;

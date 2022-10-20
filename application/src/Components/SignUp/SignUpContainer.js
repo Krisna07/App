@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import SignUpForm from "./SignUpForm.js";
+import { useNavigate } from "react-router-dom";
 const axios = require("axios");
 const FormValidators = require("./validate");
 const validateSignUpForm = FormValidators.validateSignUpForm;
 const zxcvbn = require("zxcvbn");
+let history = useNavigate;
 
 class SignUpContainer extends Component {
   constructor(props) {
@@ -66,16 +68,15 @@ class SignUpContainer extends Component {
 
   submitSignup(user) {
     var params = { username: user.usr, password: user.pw, email: user.email };
+
     axios
       .post("http://localhost:5050/api/users/signup", params)
       .then((res) => {
         if (res.data.success === true) {
-          localStorage.token = res.data.token;
-          localStorage.isAuthenticated = true;
-          window.location.reload();
+          console.log(res);
         } else {
           this.setState({
-            errors: { message: res.data.message },
+            errors: { message: res.error },
           });
         }
       })
@@ -117,7 +118,7 @@ class SignUpContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form">
         <SignUpForm
           onSubmit={this.validateForm}
           onChange={this.handleChange}
