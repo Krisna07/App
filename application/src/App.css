@@ -3,3 +3,11 @@
   background: var(--backgroundLinearGradient);
   margin: 0 auto;
 }
+.Login-form {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(var(--color1) 10%, var(--color2) 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,68 +1,64 @@
 import React, { useState } from "react";
-import FlatButton from "material-ui/FlatButton";
+// import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
-import PasswordStr from "./PasswordStr";
+// import PasswordStr from "./PasswordStr";
 import "./Signup.css";
 
-const SignUpForm = ({
-  errors,
+const SignUpForm = ({ auth, type, onChange, formData }) => {
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  //   pwConfirm: "",
+  // });
 
-  score,
-  btnTxt,
-  type,
-  pwMask,
-}) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    pwConfirm: "",
-  });
   const [pwError, setPwerror] = useState();
-  const { name, email, password, pwConfirm } = formData;
+  // const { name, email, password, pwConfirm } = formData;
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  // const onChange = (e) => {
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     [e.target.name]: e.target.value,
+  //   }));
+  // };
 
+  console.log(formData);
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!password || !pwConfirm) {
-      return setPwerror("please enter the password");
-    }
-    if (password !== pwConfirm) {
-      setPwerror("Password didnt match");
-    } else {
-      setPwerror("");
-    }
+    // if (!password || !pwConfirm) {
+    //   return setPwerror("please enter the password");
+    // }
+    // if (password !== pwConfirm) {
+    //   setPwerror("Password didnt match");
+    // } else {
+    //   setPwerror("");
+    // }
   };
   return (
     <div className="loginBox">
-      <h1>Sign Up</h1>
-      {errors.message && <p style={{ color: "red" }}>{errors.message}</p>}
+      <h1 className="heading">Sign Up</h1>
 
       <form onSubmit={onSubmit}>
         <TextField
           name="name"
           floatingLabelText="Username"
-          value={name}
+          value={formData.name}
           onChange={onChange}
         />
+
         <TextField
           name="email"
           floatingLabelText="Email"
-          value={email}
+          value={formData.email}
           onChange={onChange}
         />
+
         <TextField
           type={type}
           name="password"
           floatingLabelText="Password"
-          value={password}
+          value={formData.password}
           onChange={onChange}
         />
 
@@ -70,7 +66,7 @@ const SignUpForm = ({
           type={type}
           name="pwConfirm"
           floatingLabelText="Confirm Password"
-          value={pwConfirm}
+          value={formData.pwConfirm}
           onChange={onChange}
         />
         <br />

@@ -28,7 +28,7 @@
   align-items: center;
 }
 .loginBox form TextField {
-  width: 80%;
+  width: 100%;
 }
 
 .signUpSubmit {

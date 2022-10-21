@@ -23,54 +23,52 @@ const Login = () => {
 
   return (
     <MuiThemeProvider>
-      <div className="container">
-        <div className="login-container">
-          <div className="heading">
-            <h1>Login</h1>
-          </div>
-          <form action="post" className="login-form" onSubmit={submitForm}>
+      <div className="login-container">
+        <div className="heading">
+          <h1>Login</h1>
+        </div>
+        <form action="post" className="login-form" onSubmit={submitForm}>
+          <TextField
+            name="email"
+            floatingLabelText="Email"
+            className="textField"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <div className="passwordBox">
             <TextField
-              name="email"
-              floatingLabelText="Email"
+              name="password"
+              floatingLabelText="Password"
               className="textField"
               onChange={(e) => {
-                setUsername(e.target.value);
+                setPassword(e.target.value);
               }}
+              type={!hidePwd ? "text" : "password"}
             />
-            <div className="passwordBox">
-              <TextField
-                name="password"
-                floatingLabelText="Password"
-                className="textField"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                type={!hidePwd ? "text" : "password"}
-              />
-              <span onClick={() => setHidepwd(!hidePwd)}>
-                {!hidePwd ? <FaEye /> : <FaEyeSlash />}
-              </span>
-            </div>
-
-            <RaisedButton
-              className="submitBtn"
-              primary={true}
-              type="submit"
-              label="Login"
-            />
-          </form>
-          <label className="newHere">
-            New to the app ? Create yout account
-            <span style={{ color: "blue" }}> here.</span>
-          </label>
-          <div className="login-Options">
-            <button className="submitBtn">
-              Login with Google <FaGoogle />
-            </button>
-            <button className="submitBtn">
-              Login with Apple <FaApple />
-            </button>
+            <span onClick={() => setHidepwd(!hidePwd)}>
+              {!hidePwd ? <FaEye /> : <FaEyeSlash />}
+            </span>
           </div>
+
+          <RaisedButton
+            className="submitBtn"
+            primary={true}
+            type="submit"
+            label="Login"
+          />
+        </form>
+        <label className="newHere">
+          New to the app ? Create yout account
+          <span style={{ color: "blue" }}> here.</span>
+        </label>
+        <div className="login-Options">
+          <button className="submitBtn">
+            Login with Google <FaGoogle />
+          </button>
+          <button className="submitBtn">
+            Login with Apple <FaApple />
+          </button>
         </div>
       </div>
     </MuiThemeProvider>
