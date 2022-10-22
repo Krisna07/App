@@ -6,34 +6,12 @@ import TextField from "material-ui/TextField";
 import "./Signup.css";
 
 const SignUpForm = ({ auth, type, onChange, formData }) => {
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  //   pwConfirm: "",
-  // });
-
   const [pwError, setPwerror] = useState();
-  // const { name, email, password, pwConfirm } = formData;
 
-  // const onChange = (e) => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
+  // console.log(formData);
 
-  console.log(formData);
   const onSubmit = (e) => {
     e.preventDefault();
-    // if (!password || !pwConfirm) {
-    //   return setPwerror("please enter the password");
-    // }
-    // if (password !== pwConfirm) {
-    //   setPwerror("Password didnt match");
-    // } else {
-    //   setPwerror("");
-    // }
   };
   return (
     <div className="loginBox">

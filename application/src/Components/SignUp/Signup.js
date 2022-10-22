@@ -20,12 +20,14 @@ const Signup = () => {
     }));
   };
 
-  const authData = () => {
-    if (!name) {
-      return (err = "Please enter the username");
-    }
-    console.log(formData);
-  };
+  // const authData = (obj) => {
+  //   if (!obj) {
+  //     setFormData((prevState) => ({
+  //       ...prevState,
+  //       err: "Please enter the valid form data",
+  //     }));
+  //   }
+  // };
 
   return (
     <MuiThemeProvider>
