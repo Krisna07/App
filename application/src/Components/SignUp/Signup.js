@@ -9,9 +9,9 @@ const Signup = () => {
     email: "",
     password: "",
     pwConfirm: "",
-    err: "",
   });
-  const { name, email, password, pwConfirm, err } = formData;
+  const [err, setErr] = useState();
+  const { name, email, password, pwConfirm } = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -20,14 +20,15 @@ const Signup = () => {
     }));
   };
 
-  // const authData = (obj) => {
-  //   if (!obj) {
-  //     setFormData((prevState) => ({
-  //       ...prevState,
-  //       err: "Please enter the valid form data",
-  //     }));
-  //   }
-  // };
+  // setFormData(formData.err: "This is an error");
+  const authData = () => {
+    if (!name || !email || !password || !pwConfirm) {
+      setErr("Please Enter the valid data");
+    }
+    if (password !== pwConfirm) {
+      setErr(" The password doesnt match");
+    }
+  };
 
   return (
     <MuiThemeProvider>
