@@ -1,17 +1,26 @@
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import "./App.css";
+import Login from "./Components/Login/Login";
+import Dashboard from "./Pages/Dashboard";
 import Homepage from "./Pages/Homepage";
 import SignupPage from "./Pages/SignupPage";
-import LoginPage from "./Pages/LoginPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="signup" element={<SignupPage />} />
-      </Routes>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/user" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      </Router>
+      <ToastContainer />
     </div>
   );
 }
