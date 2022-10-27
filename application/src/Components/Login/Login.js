@@ -7,48 +7,74 @@ import { useNavigate } from "react-router-dom";
 // import "../SignUp/Signup.css";
 import "./Login.css";
 import { RaisedButton, TextField } from "material-ui";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { login, register, reset } from "../../features/auth/authSlice";
+import Spinner from "../Spinner/Spinner";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [hidePwd, setHidepwd] = useState(true);
-  const history = useNavigate();
-  const togglePassword = () => {
-    setHidepwd(!hidePwd);
-  };
-  const submitForm = (e) => {
-    console.log(username, password);
-    e.preventDefault();
-  };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
+  const { email, password } = formData;
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.auth
+  );
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate("/user");
+    }
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!password) {
+      toast.error("Please enter the password");
+    } else {
+      const userData = {
+        email,
+        password,
+      };
+      dispatch(login(userData));
+    }
+  };
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <MuiThemeProvider>
-      <div className="login-container">
+      <div className="loginBox">
         <div className="heading">
           <h1>Login</h1>
         </div>
-        <form action="post" className="login-form" onSubmit={submitForm}>
+        <form action="post" className="login-form" onSubmit={onSubmit}>
           <TextField
             name="email"
             floatingLabelText="Email"
             className="textField"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
+            onChange={onChange}
           />
           <div className="passwordBox">
             <TextField
               name="password"
               floatingLabelText="Password"
               className="textField"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              type={!hidePwd ? "text" : "password"}
+              onChange={onChange}
             />
-            <span onClick={() => setHidepwd(!hidePwd)}>
-              {!hidePwd ? <FaEye /> : <FaEyeSlash />}
-            </span>
           </div>
 
           <RaisedButton
@@ -60,7 +86,10 @@ const Login = () => {
         </form>
         <label className="newHere">
           New to the app ? Create yout account
-          <span style={{ color: "blue" }}> here.</span>
+          <span style={{ color: "blue" }} onClick={() => navigate("/signup")}>
+            {" "}
+            here.
+          </span>
         </label>
         <div className="login-Options">
           <button className="submitBtn">

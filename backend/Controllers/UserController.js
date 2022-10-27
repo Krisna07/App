@@ -10,15 +10,20 @@ const generateToken = (id) => {
     expiresIn: "3d",
   });
 };
+
+//getting the users
 const getUser = asyncHandler(async (req, res) => {
   res.status(200).json(req.user);
 });
 
+//get all the users
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find();
 
   res.status(200).json({ message: users });
 });
+
+//user login
 const loginUser = asyncHandler(async (req, res) => {
   let { email, password } = req.body;
   if (!email || !password) {
@@ -38,6 +43,8 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid user data");
   }
 });
+
+//creating the user
 const createUser = asyncHandler(async (req, res) => {
   let { username, email, password } = req.body;
   if (!username || !email || !password) {
@@ -62,6 +69,8 @@ const createUser = asyncHandler(async (req, res) => {
     throw new Error("Please check the details.");
   }
 });
+
+//editing the user
 const editUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
   if (!user) {

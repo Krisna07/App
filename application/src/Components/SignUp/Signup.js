@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 // import SignUpContainer from "./SignUpContainer";
 import SignUpForm from "./SignUpForm";

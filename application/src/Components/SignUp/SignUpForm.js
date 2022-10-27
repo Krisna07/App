@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-// import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
-// import PasswordStr from "./PasswordStr";
 import "./Signup.css";
 import { FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,14 +12,14 @@ import Spinner from "../Spinner/Spinner";
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     pwConfirm: "",
   });
   const [type, setType] = useState();
 
-  const { name, email, password, pwConfirm } = formData;
+  const { username, email, password, pwConfirm } = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -42,38 +39,28 @@ const SignUpForm = () => {
     }
     if (isSuccess || user) {
       navigate("/user");
+      console.log(isSuccess);
     }
     dispatch(reset());
+    console.log("Signup");
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5050/api/users/signup", {
-        name,
+    if (password !== pwConfirm) {
+      toast.error("Password donot match");
+    } else {
+      const userData = {
+        username,
         email,
         password,
-      })
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    // if (password !== pwConfirm) {
-    //   toast.error("passwords dont match");
-    // } else {
-    //   const userData = {
-    //     name,
-    //     email,
-    //     password,
-    //   };
-    //   dispatch(register(userData));
-    // }
+      };
+      dispatch(register(userData));
+    }
   };
-  // if (isLoading) {
-  //   return <Spinner />;
-  // }
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="loginBox">
@@ -83,9 +70,9 @@ const SignUpForm = () => {
 
       <form onSubmit={onSubmit}>
         <TextField
-          name="name"
+          name="username"
           floatingLabelText="Username"
-          value={name}
+          value={username}
           onChange={onChange}
         />
 

@@ -5,7 +5,6 @@ const asyncHandler = require("express-async-handler");
 
 const getAccount = asyncHandler(async (req, res) => {
   const accounts = await Account.find({ user: req.user._id });
-
   res.status(200).json({ message: accounts });
 });
 const createAccount = asyncHandler(async (req, res) => {

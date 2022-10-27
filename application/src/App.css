@@ -3,11 +3,24 @@
   background: var(--backgroundLinearGradient);
   margin: 0 auto;
 }
-.Login-form {
+.form {
   width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(var(--color1) 10%, var(--color2) 90%);
+  height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginBox {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
