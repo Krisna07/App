@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -11,14 +11,31 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./Pages/LoginPage";
 
 function App() {
+  const [type, setType] = useState(false);
+  const showPassword = () => {
+    setType(!type);
+  };
+
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/user" element={<Dashboard />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+          <Route
+            path="/login"
+            element={
+              <LoginPage
+                type={type}
+                showPassword={showPassword}
+                onLoad={() => (!type ? showPassword() : "")}
+              />
+            }
+          />
+          <Route
+            path="/signup"
+            element={<SignupPage type={type} showPassword={showPassword} />}
+          />
         </Routes>
       </Router>
       <ToastContainer />

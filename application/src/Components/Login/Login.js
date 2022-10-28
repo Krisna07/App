@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import { login, register, reset } from "../../features/auth/authSlice";
 import Spinner from "../Spinner/Spinner";
 
-const Login = () => {
+const Login = ({ type, showPassword }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -55,6 +55,7 @@ const Login = () => {
   if (isLoading) {
     return <Spinner />;
   }
+
   return (
     <MuiThemeProvider>
       <div className="loginBox">
@@ -70,11 +71,15 @@ const Login = () => {
           />
           <div className="passwordBox">
             <TextField
+              type={!type ? "password" : "text"}
               name="password"
               floatingLabelText="Password"
               className="textField"
               onChange={onChange}
             />
+            <span onClick={showPassword} style={{ background: "red" }}>
+              {!type ? <FaEyeSlash /> : <FaEye />}
+            </span>
           </div>
 
           <RaisedButton

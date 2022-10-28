@@ -1,10 +1,10 @@
 import React from "react";
 import Login from "../Components/Login/Login";
 
-const LoginPage = () => {
+const LoginPage = ({ type, showPassword }) => {
   return (
     <div className="form">
-      <Login />
+      <Login type={type} showPassword={showPassword} />
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
 import Signup from "../Components/SignUp/Signup";
 
-const SignupPage = () => {
+const SignupPage = ({ type, showPassword }) => {
   return (
     <div className="form">
-      <Signup />
+      <Signup type={type} showPassword={showPassword} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import "./Signup.css";
-import { FaUser } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -10,14 +10,13 @@ import { toast } from "react-toastify";
 import { register, reset } from "../../features/auth/authSlice";
 import Spinner from "../Spinner/Spinner";
 
-const SignUpForm = () => {
+const SignUpForm = ({ type, showPassword }) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
     pwConfirm: "",
   });
-  const [type, setType] = useState();
 
   const { username, email, password, pwConfirm } = formData;
 
@@ -63,7 +62,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className="loginBox">
+    <div className="loginBox" onLoad={showPassword}>
       <h1 className="heading">
         <FaUser /> Sign Up
       </h1>
@@ -84,7 +83,7 @@ const SignUpForm = () => {
         />
 
         <TextField
-          type={type}
+          type={!type ? "password" : "text"}
           name="password"
           floatingLabelText="Password"
           value={password}
@@ -92,12 +91,14 @@ const SignUpForm = () => {
         />
 
         <TextField
-          type={type}
+          type={!type ? "password" : "text"}
           name="pwConfirm"
           floatingLabelText="Confirm Password"
           value={pwConfirm}
           onChange={onChange}
         />
+        <br />
+        <span onClick={showPassword}>{!type ? <FaEyeSlash /> : <FaEye />}</span>
         <br />
 
         <br />
@@ -110,7 +111,13 @@ const SignUpForm = () => {
       </form>
       <p>
         Aleady have an account? <br />
-        <a href="/login">Log in here</a>
+        <span
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          Log in here
+        </span>
       </p>
     </div>
   );

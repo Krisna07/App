@@ -3,12 +3,10 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 // import SignUpContainer from "./SignUpContainer";
 import SignUpForm from "./SignUpForm";
 
-const Signup = () => {
-  // setFormData(formData.err: "This is an error");
-
+const Signup = ({ type, showPassword }) => {
   return (
     <MuiThemeProvider>
-      <SignUpForm />
+      <SignUpForm type={type} showPassword={showPassword} />
     </MuiThemeProvider>
   );
 };
