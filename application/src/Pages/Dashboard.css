@@ -1,0 +1,22 @@
+.dashboard {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    " side top"
+    " side main";
+  grid-template-columns: 5% 95%;
+  grid-template-rows: 10% 90%;
+}
+.sidenav {
+  background: var(--color4);
+  grid-area: side;
+}
+.topnav {
+  background: var(--color3);
+  grid-area: top;
+}
+.appbody {
+  background: var(--color2);
+  grid-area: main;
+}

@@ -1,14 +1,21 @@
+.navigationContainer {
+  display: flex;
+  align-items: flex-start;
+}
+
 .topnav {
-  padding: 1rem;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 20px;
   transition: all 200ms ease-in-out;
+  box-shadow: var(--color3) 0px 1px 100px 0px;
 }
 .leftnav {
   display: flex;
   gap: 2rem;
+  padding: 0 1rem;
 }
 .search-box {
   background: var(--color4);
@@ -30,6 +37,7 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  padding: 0 1rem;
 }
 .theme {
   color: white;
@@ -67,10 +75,10 @@
   transition: all 200ms ease;
   color: var(--color2);
 }
-.sideMenus {
+.sidenav {
   width: 0;
   height: 100vh;
-  background: green;
+  background: var(--color3);
   position: relative;
   left: 0;
   top: 0;

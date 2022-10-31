@@ -10,12 +10,13 @@ import {
   FaCog,
   FaQuestionCircle,
   FaSignOutAlt,
+  FaAngleLeft,
 } from "react-icons/fa";
 import "./Navigation.scss";
-import axios from "axios";
+
+import SideNav from "./SideNav";
 
 function Navigation({ optOut, user }) {
-  const [country, setCountry] = useState();
   const [dark, setDark] = useState();
   const [profile, setprofile] = useState();
   const [sidenav, showSidenav] = useState();
@@ -25,14 +26,14 @@ function Navigation({ optOut, user }) {
   };
 
   return (
-    <>
+    <div className="navigationContainer">
       <section
         className="topnav"
-        style={{ width: `${sidenav ? "90%" : "100%"}` }}
+        style={{ width: `${sidenav ? "85%" : "95%"}` }}
       >
         <div className="leftnav">
-          <div className="burgurmenu">
-            <FaBars onClick={() => showSidenav(!sidenav)} />
+          <div className="burgurmenu" onClick={() => showSidenav(!sidenav)}>
+            {!sidenav ? <FaBars /> : <FaAngleLeft />}
           </div>
           <div className="search-box">
             <input className="search-input" type="text" />
@@ -84,13 +85,7 @@ function Navigation({ optOut, user }) {
           </div>
         </div>
       </section>
-      <section className="sidenav">
-        <div
-          className="sideMenus"
-          style={{ width: `${sidenav ? "10%" : "0"}` }}
-        ></div>
-      </section>
-    </>
+    </div>
   );
 }
 
