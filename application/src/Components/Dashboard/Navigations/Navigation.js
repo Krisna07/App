@@ -16,7 +16,7 @@ import "./Navigation.scss";
 
 import SideNav from "./SideNav";
 
-function Navigation({ optOut, user }) {
+function Navigation({ optOut, user, extSideNav, showSide }) {
   const [dark, setDark] = useState();
   const [profile, setprofile] = useState();
   const [sidenav, showSidenav] = useState();
@@ -27,13 +27,10 @@ function Navigation({ optOut, user }) {
 
   return (
     <div className="navigationContainer">
-      <section
-        className="topnav"
-        style={{ width: `${sidenav ? "85%" : "95%"}` }}
-      >
+      <section className="topnav">
         <div className="leftnav">
-          <div className="burgurmenu" onClick={() => showSidenav(!sidenav)}>
-            {!sidenav ? <FaBars /> : <FaAngleLeft />}
+          <div className="burgurmenu" onClick={() => extSideNav()}>
+            {showSide ? <FaBars /> : <FaAngleLeft />}
           </div>
           <div className="search-box">
             <input className="search-input" type="text" />
