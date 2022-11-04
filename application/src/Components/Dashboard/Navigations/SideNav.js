@@ -16,24 +16,38 @@ const SideNav = ({ showSide }) => {
 
   return (
     <div className="sideContainer">
-      <div className="heading">
-        <FaLightbulb
+      <h2
+        className="menuItems"
+        style={{
+          justifyContent: "center",
+          margin: "0",
+          padding: "2rem",
+          gap: "1rem",
+        }}
+      >
+        <FaLightbulb />
+        <span
           style={{
-            padding: "1rem 0",
+            display: `${!showSide ? "block" : "none"}`,
+            color: "var(--color4)",
           }}
-        />
-      </div>
+        >
+          Brite
+        </span>
+      </h2>
       <div className="sidemenus">
         {menuItems.map((items) => {
           return (
-            <div
-              className="menuItems"
-              style={{ justifyContent: `${showSide ? "center" : ""}` }}
-            >
-              {items.icons}
-              <span style={{ display: `${!showSide ? "block" : "none"}` }}>
-                {items.name}
-              </span>
+            <div className="menuItems">
+              <div
+                className="menuOpt"
+                style={{ justifyContent: `${showSide ? "center" : ""}` }}
+              >
+                {items.icons}
+                <span style={{ display: `${!showSide ? "block" : "none"}` }}>
+                  {items.name}
+                </span>
+              </div>
             </div>
           );
         })}

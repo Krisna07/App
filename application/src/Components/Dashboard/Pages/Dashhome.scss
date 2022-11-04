@@ -1,10 +1,19 @@
-.pageNav {
+.dashHome {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+.pageNav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--color3);
 }
+
 .DashBtn {
   padding: 0.5rem 1rem;
   font-size: 20px;
@@ -16,19 +25,28 @@
   background-size: 400% 400%;
   animation: gradient 1s ease-in-out;
 }
-.pageValues {
+.section {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 1rem 0;
-  gap: 2rem;
+  justify-content: space-between;
 }
-.dataComp {
-  width: 25%;
+.sectionItems {
+  width: 100%;
+  padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dataComp {
+  min-width: 18%;
+  display: flex;
+  align-items: center;
   padding: 1rem 2rem;
+  gap: 4rem;
   background-color: var(--color2);
   border-radius: 8px;
   text-align: left;
@@ -68,13 +86,7 @@
   font-size: 32px;
   opacity: 0.4;
 }
-.barPage {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-}
+
 .linearFlow {
   width: 60%;
   background-color: rgb(219, 219, 219);
@@ -83,11 +95,174 @@
   padding: 1rem;
 }
 .piesavings {
-  width: 20%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   background-color: rgb(219, 219, 219);
   color: black;
   border-radius: 20px;
+}
+.pieContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goals {
+  width: 30%;
+  background: white;
+  border-radius: 20px;
+  padding: 1rem;
+  color: black;
+}
+.goalsPeak {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.goalsPeak .goalcomp:last-child {
+  border: none;
+}
+.goalcomp {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color4);
+  padding: 1rem;
+  position: relative;
+}
+.goalsDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.goalsDetails span:nth-child(1) {
+  font-weight: 600;
+}
+.goalsdue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.goalActions {
+  display: flex;
+  flex-direction: column;
+  background: var(--color4);
+  position: absolute;
+  right: -6rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.goalActions span {
+  padding: 1rem;
+}
+.goalActions span:hover {
+  background-color: var(--color2);
+  color: white;
+}
+.cashFlow {
+  width: 60%;
+  background-color: white;
+  border-radius: 20px;
+  color: rgba(0, 0, 0);
+  padding: 1rem;
+}
+.savingsTable {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  padding: 1rem;
+  gap: 1rem;
+}
+.savingsTable table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.savingsTable tr {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+.savingsTable tr:last-child {
+  border: none;
+}
+.savingsTable th,
+td {
+  width: 20%;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.savingsTable th {
+  padding: 1rem;
+}
+
+.progressCircle {
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.fixedincenter {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+.teamContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.teamImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  top: 0;
+  background: black;
+}
+.teamImage:hover {
+  z-index: 99;
+
+  transition: all 200ms ease-in-out;
+}
+
+.teamImage:first-child {
+  left: 0;
+}
+.transactions {
+  width: 20%;
+  background: white;
+  color: black;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.transactioncard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
 }

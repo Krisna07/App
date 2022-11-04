@@ -8,7 +8,6 @@ const Navbar = () => {
     <div className="navbarContainer">
       <div className="navbar">
         <div className="logo"></div>
-
         <div className="navList">
           <span>Home</span>
           <span>About</span>

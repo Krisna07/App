@@ -6,17 +6,34 @@
     " side top"
     " side main";
   transition: all 200ms ease-in-out;
-  grid-template-rows: 10vh 90vh;
+  grid-template-rows: 10%;
+  position: relative;
+  z-index: 99;
 }
 .sidenav {
   grid-area: side;
+  height: 100%;
+  position: fixed;
+  transition: width ease-in-out 200ms;
+  z-index: 1;
 }
 .topnav {
-  background: var(--color3);
+  background-color: var(--color3);
   grid-area: top;
+  z-index: 99;
 }
 .appbody {
   background: var(--color1);
   grid-area: main;
-  padding: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidenav {
+    display: none;
+  }
 }
