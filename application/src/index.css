@@ -21,8 +21,8 @@ code {
   --bodyFont: "Inter", sans-serif;
   --backgroundLinearGradient: linear-gradient(
     to right,
-    var(--color1) 100%,
-    var(--color2) 0%
+    var(--color1),
+    var(--color2)
   );
   --color1: #000000;
   --color2: #150050;

@@ -24,6 +24,9 @@
   align-items: center;
   justify-content: center;
 }
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 @media only screen and (max-width: 600px) {
   .App {

@@ -114,6 +114,7 @@ const DashHome = () => {
   const [sortItem, setSortItem] = useState();
   const sortedValues = _.orderBy(savings, sortItem);
   console.log(sortedValues);
+  const transactionInfo = [...Array(4).keys()];
 
   return (
     <div className="dashHome">
@@ -237,7 +238,7 @@ const DashHome = () => {
       </div>
       <div className="section">
         <div className="sectionItems">
-          <Transactions />
+          <Transactions transactionInfo={transactionInfo} />
         </div>
       </div>
     </div>
