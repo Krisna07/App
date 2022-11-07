@@ -9,12 +9,14 @@ import {
 
 import { BsThreeDotsVertical } from "react-icons/bs";
 import "./Dashhome.scss";
-import { LineChart, PieChart } from "react-chartkick";
+import { BarChart, LineChart, PieChart } from "react-chartkick";
 import "chartkick/chart.js";
 import Actions from "../miniComponents/Actions";
 import Datacards from "../miniComponents/Datacards";
 import Savings from "../miniComponents/Savings";
 import Transactions from "../miniComponents/Transactions";
+import moment from "moment";
+import { random } from "gsap";
 
 const DashHome = () => {
   const prevSaving = 40000;
@@ -113,8 +115,41 @@ const DashHome = () => {
   var _ = require("lodash");
   const [sortItem, setSortItem] = useState();
   const sortedValues = _.orderBy(savings, sortItem);
-  console.log(sortedValues);
+
   const transactionInfo = [...Array(4).keys()];
+
+  console.log(((Math.random() + 1) * 100000).toFixed());
+  let thisdate = new Date().getTime();
+
+  console.log(
+    moment()
+      .subtract(((Math.random() + 1) * 100).toFixed(), "days")
+      .calendar()
+  );
+  const randomDate = () => {
+    return moment()
+      .subtract(((Math.random() + 1) * 100).toFixed(), "days")
+      .calendar();
+  };
+  const randomNumber = ((Math.random() + 1) * 100000).toFixed();
+  const randomdata = [
+    {
+      date: randomDate(),
+      amount: randomNumber,
+    },
+    {
+      date: randomDate(),
+      amount: randomNumber,
+    },
+    {
+      date: randomDate(),
+      amount: randomNumber,
+    },
+    {
+      date: randomDate(),
+      amount: randomNumber,
+    },
+  ];
 
   return (
     <div className="dashHome">
@@ -144,12 +179,9 @@ const DashHome = () => {
       </div>
       <div className="section">
         <div className="sectionItems">
-          {" "}
-          <div className="linearFlow">
-            <h2>Monthly Savings</h2>
+          <div className="linearFlow chartContainer" style={{ width: "60%" }}>
+            <h2 className="chartHeading">Monthly Savings</h2>
             <LineChart
-              width="100%"
-              height="20rem"
               data={{
                 "2020-05-13": 20000,
                 "2021-05-14": 32000,
@@ -158,12 +190,10 @@ const DashHome = () => {
               }}
             />
           </div>
-          <div className="piesavings">
-            <h2>Overall Savings</h2>
+          <div className="piesavings chartContainer" style={{ width: "35%" }}>
+            <h2 className="chartHeading">Overall Savings</h2>
             <div className="pieContainer">
               <PieChart
-                width="100%"
-                height="20rem"
                 data={{
                   "2020-05-13": 20000,
                   "2021-05-14": 32000,
@@ -177,33 +207,34 @@ const DashHome = () => {
       </div>
       <div className="section">
         <div className="sectionItems">
-          <div className="goals">
-            <h2>Goals</h2>
+          <div className="goals chartContainer" style={{ width: "35%" }}>
+            <h2 className="chartHeading">Goals</h2>
             <div className="goalsPeak">
               {goals.map((items) => (
                 <Actions items={items} />
               ))}
             </div>
           </div>
-          <div className="cashFlow">
-            <h2>Cashflow</h2>
+          <div className="cashFlow chartContainer" style={{ width: "60%" }}>
+            <h2 className="chartHeading">Cashflow</h2>
+
+            {}
             <LineChart
               width="100%"
               height="20rem"
-              data={{
-                "2020-05-13": 20000,
-                "2021-05-14": 32000,
-                "2021-09-14": 80000,
-                "2022-07-14": 90000,
-              }}
+              data={
+               { randomdata.map((items) => 
+                 return items.date : items.amount
+               )}
+              }
             />
           </div>
         </div>
       </div>
       <div className="section">
-        <div className="sectionItems">
-          <div className="savingsTable">
-            <h4>Savings</h4>
+        <div className="sectionItems ">
+          <div className="savingsTable chartContainer">
+            <h2 className="chartHeading">Savings</h2>
             <table>
               <tbody>
                 <tr>
@@ -238,7 +269,23 @@ const DashHome = () => {
       </div>
       <div className="section">
         <div className="sectionItems">
-          <Transactions transactionInfo={transactionInfo} />
+          <div className="transactions chartContainer" style={{ width: "50%" }}>
+            <h2 className="chartHeading">Transactions</h2>
+            <div className="transactionDetails ">
+              {transactionInfo.map((items, x) => (
+                <Transactions transactionInfo={items} key={x} />
+              ))}
+            </div>
+          </div>
+          <div className="activities chartContainer" style={{ width: "45%" }}>
+            <h2 className="chartHeading">Activities</h2>
+            <BarChart
+              data={{
+                incoming: 40000,
+                outgoing: 32000,
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
