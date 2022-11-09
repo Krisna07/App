@@ -37,10 +37,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 1rem;
+  flex-wrap: wrap;
 }
-
+.chartContainer {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 1rem;
+  color: black;
+  border-radius: 20px;
+}
+.chartHeading {
+  font-family: var(--headingFont);
+  padding: 1rem 0;
+}
 .dataComp {
   min-width: 18%;
   display: flex;
@@ -87,22 +99,6 @@
   opacity: 0.4;
 }
 
-.linearFlow {
-  width: 60%;
-  background-color: rgb(219, 219, 219);
-  color: black;
-  border-radius: 20px;
-  padding: 1rem;
-}
-.piesavings {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  background-color: rgb(219, 219, 219);
-  color: black;
-  border-radius: 20px;
-}
 .pieContainer {
   width: 100%;
   display: flex;
@@ -115,6 +111,9 @@
   background: white;
   border-radius: 20px;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   color: black;
 }
 .goalsPeak {
@@ -156,6 +155,7 @@
   right: -6rem;
   border-radius: 16px;
   overflow: hidden;
+  z-index: 99;
 }
 .goalActions span {
   padding: 1rem;
@@ -170,6 +170,9 @@
   border-radius: 20px;
   color: rgba(0, 0, 0);
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .savingsTable {
   width: 100%;
@@ -261,6 +264,7 @@ td {
   border-radius: 20px;
   position: relative;
   gap: 1rem;
+  overflow: hidden;
 }
 
 .transactionDetails {
@@ -272,8 +276,7 @@ td {
   flex-direction: column;
   gap: 1rem;
   border-radius: 20px;
-  overflow: scroll;
-  -ms-overflow-style: none;
+  overflow: none;
   scrollbar-width: 0;
   position: relative;
 }
@@ -292,9 +295,14 @@ td {
   height: 100%;
   background: var(--color4);
   position: absolute;
+
   bottom: -100%;
   right: 50%;
 }
+.transactioncard .teamImage:last-child()::after {
+  display: none;
+}
+
 .transactioncard .teamImage:hover {
   z-index: 0;
 }

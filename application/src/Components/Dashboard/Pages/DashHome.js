@@ -131,26 +131,34 @@ const DashHome = () => {
       .subtract(((Math.random() + 1) * 100).toFixed(), "days")
       .calendar();
   };
-  const randomNumber = ((Math.random() + 1) * 100000).toFixed();
+  const randomAmount = () => {
+    return ((Math.random() + 1) * 100000).toFixed();
+  };
+
   const randomdata = [
     {
       date: randomDate(),
-      amount: randomNumber,
+      amount: randomAmount(),
     },
     {
       date: randomDate(),
-      amount: randomNumber,
+      amount: randomAmount(),
     },
     {
       date: randomDate(),
-      amount: randomNumber,
+      amount: randomAmount(),
     },
     {
       date: randomDate(),
-      amount: randomNumber,
+      amount: randomAmount(),
     },
   ];
 
+  const data = `{${randomdata.map((items) => {
+    return `"${items.date}":"${items.amount}"`;
+  })}}`;
+  console.log(data);
+  // const data = {randomDate():randomAmount()}
   return (
     <div className="dashHome">
       <div className="pageNav section">
@@ -218,16 +226,7 @@ const DashHome = () => {
           <div className="cashFlow chartContainer" style={{ width: "60%" }}>
             <h2 className="chartHeading">Cashflow</h2>
 
-            {}
-            <LineChart
-              width="100%"
-              height="20rem"
-              data={
-               { randomdata.map((items) => 
-                 return items.date : items.amount
-               )}
-              }
-            />
+            <LineChart width="100%" height="20rem" />
           </div>
         </div>
       </div>

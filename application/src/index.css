@@ -20,7 +20,7 @@ code {
   --headingFont: "Roboto Condensed", sans-serif;
   --bodyFont: "Inter", sans-serif;
   --backgroundLinearGradient: linear-gradient(
-    to right,
+    45deg,
     var(--color1),
     var(--color2)
   );
