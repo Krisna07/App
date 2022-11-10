@@ -17,6 +17,7 @@ import Savings from "../miniComponents/Savings";
 import Transactions from "../miniComponents/Transactions";
 import moment from "moment";
 import { random } from "gsap";
+import PageNavigation from "../miniComponents/PageNavigation";
 
 const DashHome = () => {
   const prevSaving = 40000;
@@ -154,24 +155,9 @@ const DashHome = () => {
     },
   ];
 
-  const data = `{${randomdata.map((items) => {
-    return `"${items.date}":"${items.amount}"`;
-  })}}`;
-  console.log(data);
-  // const data = {randomDate():randomAmount()}
   return (
-    <div className="dashHome">
-      <div className="pageNav section">
-        <div className="sectionItems">
-          <div className="pageTitle">
-            <span>Overview</span>
-            <h2>Dashboard</h2>
-          </div>
-          <div className="pageAction">
-            <button className="DashBtn">Create Goal</button>
-          </div>
-        </div>
-      </div>
+    <div className="dashHome pageContainer">
+      <PageNavigation pageTitle={"Dashboard"} pageBtn={"Create goal"} />
       <div className="section">
         <div className="sectionItems">
           {pageValue.map((items, x) => (
@@ -226,7 +212,16 @@ const DashHome = () => {
           <div className="cashFlow chartContainer" style={{ width: "60%" }}>
             <h2 className="chartHeading">Cashflow</h2>
 
-            <LineChart width="100%" height="20rem" />
+            <LineChart
+              width="100%"
+              height="20rem"
+              data={{
+                "2020-05-13": 20000,
+                "2021-05-14": 32000,
+                "2021-09-14": 80000,
+                "2022-07-14": 90000,
+              }}
+            />
           </div>
         </div>
       </div>

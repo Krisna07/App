@@ -29,6 +29,9 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
+//getAccounts
+const getAccounts = async (userData) => {};
+
 const authService = {
   register,
   logout,

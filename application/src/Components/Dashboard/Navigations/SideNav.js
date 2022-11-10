@@ -1,17 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaBullseye, FaCoins, FaHome, FaLightbulb } from "react-icons/fa";
 
 import { BsBank2, BsFillChatDotsFill } from "react-icons/bs";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import "./Sidenav.scss";
 
 const SideNav = ({ showSide }) => {
+  const getUrl = window.location.href.split("/");
+  let thisUrl = getUrl[getUrl.length - 1];
+  console.log(thisUrl);
+  if (thisUrl === "user") {
+    thisUrl = "dashboard";
+  }
   const menuItems = [
-    { name: "Dashboard", icons: <FaHome /> },
-    { name: "Chats", icons: <BsFillChatDotsFill /> },
-    { name: "Goals", icons: <FaBullseye /> },
-    { name: "Accounts", icons: <BsBank2 /> },
-    { name: "Transactions", icons: <FaCoins /> },
+    {
+      name: "Dashboard",
+      icons: <FaHome />,
+      route: "",
+      obj: "dashboard",
+    },
+    {
+      name: "Chats",
+      icons: <BsFillChatDotsFill />,
+      route: "chats",
+      obj: "chats",
+    },
+    { name: "Goals", icons: <FaBullseye />, route: "goals", obj: "goals" },
+    {
+      name: "Accounts",
+      icons: <BsBank2 />,
+      route: "accounts",
+      obj: "accounts",
+    },
+    {
+      name: "Transactions",
+      icons: <FaCoins />,
+      route: "transactions",
+      obj: "transactions",
+    },
   ];
 
   return (
@@ -36,9 +63,16 @@ const SideNav = ({ showSide }) => {
         </span>
       </h2>
       <div className="sidemenus">
-        {menuItems.map((items) => {
+        {menuItems.map((items, x) => {
           return (
-            <div className="menuItems">
+            <NavLink
+              className={` ${
+                thisUrl === items.obj
+                  ? " menuItems menu_active"
+                  : "menuItems menu_inactive"
+              }`}
+              to={`${items.route}`}
+            >
               <div
                 className="menuOpt"
                 style={{ justifyContent: `${showSide ? "center" : ""}` }}
@@ -48,7 +82,7 @@ const SideNav = ({ showSide }) => {
                   {items.name}
                 </span>
               </div>
-            </div>
+            </NavLink>
           );
         })}
       </div>

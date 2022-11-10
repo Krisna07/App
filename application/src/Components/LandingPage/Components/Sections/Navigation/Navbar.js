@@ -35,11 +35,11 @@ const Navbar = () => {
       </div>
       <div className="mobileNav">
         <input type="checkbox" id="active" />
-        <label for="active" class="menu-btn">
+        <label htmlFor="active" className="menu-btn">
           <span></span>
         </label>
-        <label for="active" class="close"></label>
-        <div class="wrapper">
+        <label htmlFor="active" className="close"></label>
+        <div className="wrapper">
           <span>Home</span>
           <span>About</span>
 

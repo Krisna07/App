@@ -29,3 +29,8 @@ code {
   --color3: #3f0071;
   --color4: #fb2576;
 }
+a {
+  text-decoration: none;
+
+  text-align: left;
+}

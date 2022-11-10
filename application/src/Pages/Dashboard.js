@@ -5,13 +5,21 @@ import { logout, reset } from "../features/auth/authSlice";
 import Navigation from "../Components/Dashboard/Navigations/Navigation";
 import "./Dashboard.css";
 import SideNav from "../Components/Dashboard/Navigations/SideNav";
-import DashHome from "../Components/Dashboard/Pages/DashHome";
+
+import PageRoutes from "../Components/Dashboard/PageRoutes";
 
 const Dashboard = () => {
-  const [showSide, setShowSide] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [showSide, setShowSide] = useState(true);
+
   const { user } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+
   const extSidenav = () => {
     setShowSide(!showSide);
   };
@@ -21,7 +29,6 @@ const Dashboard = () => {
     dispatch(reset());
     navigate("/");
   };
-  console.log(user);
 
   return (
     <div
@@ -42,8 +49,9 @@ const Dashboard = () => {
           showSide={showSide}
         />
       </div>
+
       <div className="appbody">
-        <DashHome />
+        <PageRoutes />
       </div>
     </div>
   );

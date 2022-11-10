@@ -9,6 +9,12 @@ import SignupPage from "./Pages/SignupPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./Pages/LoginPage";
+import Account from "./Components/Dashboard/Pages/Apppages/Account";
+import PageRoutes from "./Components/Dashboard/PageRoutes";
+import DashHome from "./Components/Dashboard/Pages/DashHome";
+import Messages from "./Components/Dashboard/Pages/Apppages/Messages";
+import Goal from "./Components/Dashboard/Pages/Apppages/Goal";
+import Transaction from "./Components/Dashboard/Pages/Apppages/Transaction";
 
 function App() {
   const [type, setType] = useState(false);
@@ -21,7 +27,13 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/user" element={<Dashboard />} />
+          <Route path="/user" element={<Dashboard />}>
+            <Route path="" element={<DashHome />} />
+            <Route path="accounts" element={<Account />} />
+            <Route path="chats" element={<Messages />} />
+            <Route path="goals" element={<Goal />} />
+            <Route path="transactions" element={<Transaction />} />
+          </Route>
           <Route
             path="/login"
             element={

@@ -31,6 +31,7 @@
   transition: all 200ms ease-in-out;
   color: white;
 }
+
 .menuOpt {
   width: 80%;
   gap: 1rem;
@@ -39,7 +40,7 @@
   text-align: center;
 }
 
-.sidemenus .menuItems:hover {
+.menu_inactive:hover {
   background: linear-gradient(to right, var(--color4), var(--color2) 100%);
   background-size: 400% 400%;
   animation: gradient 1s ease-in-out;
@@ -52,4 +53,9 @@
   100% {
     background-position: 0% 100%;
   }
+}
+.menu_active {
+  background: linear-gradient(to right, var(--color1), var(--color2) 100%);
+  background-size: 400% 400%;
+  transition: all ease-in-out 200ms;
 }

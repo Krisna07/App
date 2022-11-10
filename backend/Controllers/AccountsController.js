@@ -8,10 +8,12 @@ const getAccount = asyncHandler(async (req, res) => {
   res.status(200).json({ message: accounts });
 });
 const createAccount = asyncHandler(async (req, res) => {
-  let { name, accountNumber, bsb, accountBalance } = req.body;
-  if (!name || !accountNumber || !bsb) {
-    res.status(400).json({ message: "please input the required field" });
+  let { name } = req.body;
+  if (!name) {
+    res.status(400).json({ message: "please input the Name for the account" });
   }
+  const accountNumber = (Math.random() * 100000000).toFixed();
+  const bsb = (Math.random() * 1000000).toFixed();
 
   const account = await Account.create({
     user: req.user.id,
